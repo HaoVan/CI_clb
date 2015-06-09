@@ -38,9 +38,9 @@ class Index extends CI_Controller {
     }
     
     private function validation(){
-        $this->form_validation->set_rules('email', $this->lang->line('msg_email_addr'), 'trim|max_length[255]');
+        $this->form_validation->set_rules('email', $this->lang->line('msg_email_addr'), 'trim|valid_email');
         $this->form_validation->set_rules('full_name', $this->lang->line('msg_pswd'), 'required|trim|alpha_numeric_symbols|max_length[255]');
-        $this->form_validation->set_rules('mobile_phone', $this->lang->line('msg_email_addr'), 'trim|max_length[255]');
+        $this->form_validation->set_rules('mobile_phone', $this->lang->line('msg_email_addr'), 'required|trim|max_length[255]');
         $this->form_validation->set_rules('home_phone', $this->lang->line('msg_email_addr'), 'trim|max_length[255]');
         $this->form_validation->set_rules('address', $this->lang->line('msg_email_addr'), 'trim|max_length[255]');
         $this->form_validation->set_rules('social', $this->lang->line('msg_email_addr'), 'trim|max_length[255]');
