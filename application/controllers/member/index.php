@@ -14,26 +14,26 @@ class Index extends CI_Controller {
     }
 
     public function index() {
-        $arr['page'] = 'student';
-        $this->load->view('student/management',$arr);
+        $arr['page'] = 'member';
+        $this->load->view('member/management',$arr);
     }
 
     public function add() {
-        $arr['page'] = 'Add new student';
+        $arr['page'] = 'Add new member';
         $this->validation();
-        $this->load->view('student/add',$arr);
+        $this->load->view('member/add',$arr);
     }
 
     public function edit() {
-        $arr['page'] = 'student';
+        $arr['page'] = 'member';
         $this->load->view('admin/vwEditUser',$arr);
     }
     
-    public function block_student() {
+    public function block_member() {
         // Code goes here
     }
     
-    public function delete_student() {
+    public function delete_member() {
         // Code goes here
     }
     
