@@ -3,12 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 09, 2015 at 04:30 AM
+-- Generation Time: Jun 09, 2015 at 10:11 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.4.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `successkey`
@@ -33,15 +39,15 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('8eb7193f42340140cb47b7ae48f40b4e', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1433758876, 'a:6:{s:9:"user_data";s:0:"";s:2:"id";s:1:"1";s:8:"username";s:4:"demo";s:5:"email";s:22:"abhishek@devzone.co.in";s:14:"is_admin_login";b:1;s:9:"user_type";s:2:"SA";}');
+('f4d2fc58388558ef92429d7550b4370c', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1433836708, 'a:6:{s:9:"user_data";s:0:"";s:2:"id";s:1:"1";s:8:"username";s:4:"demo";s:5:"email";s:19:"quochao90@gmail.com";s:14:"is_admin_login";b:1;s:9:"user_type";s:2:"SA";}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_admin_users`
+-- Table structure for table `tbl_admin`
 --
 
-CREATE TABLE `tbl_admin_users` (
+CREATE TABLE `tbl_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(150) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -51,10 +57,10 @@ CREATE TABLE `tbl_admin_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_admin_users`
+-- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin_users` (`id`, `username`, `email`, `password`, `block`, `user_type`) VALUES
+INSERT INTO `tbl_admin` (`id`, `username`, `email`, `password`, `block`, `user_type`) VALUES
 (1, 'demo', 'quochao90@gmail.com', '7e466fc01a0c7932e96a4a925b11b06a', 0, 'SA');
 
 -- --------------------------------------------------------
@@ -68,7 +74,7 @@ CREATE TABLE `tbl_class` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `time` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `level` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -80,7 +86,7 @@ CREATE TABLE `tbl_class_student_teacher` (
   `id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -99,5 +105,58 @@ CREATE TABLE `tbl_member` (
   `status` varchar(1) DEFAULT NULL COMMENT '1on, 2 off, 3 pre',
   `address` varchar(255) DEFAULT NULL,
   `note` text,
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '1: student, 2: teacher; 3: guest'
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '1: student, 2: teacher; 3: guest',
+  `created_date` datetime NOT NULL,
+  `modified_date` datetime NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=649 DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`session_id`);
+
+--
+-- Indexes for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_class`
+--
+ALTER TABLE `tbl_class`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_member`
+--
+ALTER TABLE `tbl_member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tbl_class`
+--
+ALTER TABLE `tbl_class`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_member`
+--
+ALTER TABLE `tbl_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=649;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
