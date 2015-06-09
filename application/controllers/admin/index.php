@@ -39,7 +39,7 @@ class Index extends CI_Controller {
                     $err['error'] = '<strong>Access Denied</strong> Invalid Username/Password';
                     $this->load->view('admin/vwLogin', $err);
                 }
-                foreach ($rs as $recs => $res) {
+                foreach ($rs as $res) {
                     $this->session->set_userdata(array(
                         'username' => $res['username'],
                         'email' => $res['email'],
