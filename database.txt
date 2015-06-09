@@ -1,0 +1,103 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.1.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 09, 2015 at 04:30 AM
+-- Server version: 5.5.42
+-- PHP Version: 5.4.39
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `successkey`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `session_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text COLLATE utf8_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('8eb7193f42340140cb47b7ae48f40b4e', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1433758876, 'a:6:{s:9:"user_data";s:0:"";s:2:"id";s:1:"1";s:8:"username";s:4:"demo";s:5:"email";s:22:"abhishek@devzone.co.in";s:14:"is_admin_login";b:1;s:9:"user_type";s:2:"SA";}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin_users`
+--
+
+CREATE TABLE `tbl_admin_users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `block` tinyint(4) NOT NULL DEFAULT '0',
+  `user_type` enum('SA','A') DEFAULT 'SA' COMMENT 'SA: Super Admin,A: Admin'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_admin_users`
+--
+
+INSERT INTO `tbl_admin_users` (`id`, `username`, `email`, `password`, `block`, `user_type`) VALUES
+(1, 'demo', 'quochao90@gmail.com', '7e466fc01a0c7932e96a4a925b11b06a', 0, 'SA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_class`
+--
+
+CREATE TABLE `tbl_class` (
+  `id` int(10) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `time` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `level` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_class_student_teacher`
+--
+
+CREATE TABLE `tbl_class_student_teacher` (
+  `id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_member`
+--
+
+CREATE TABLE `tbl_member` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `social` varchar(255) DEFAULT NULL,
+  `signup_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `mobile_phone` varchar(50) DEFAULT NULL,
+  `home_number` varchar(50) NOT NULL,
+  `status` varchar(1) DEFAULT NULL COMMENT '1on, 2 off, 3 pre',
+  `address` varchar(255) DEFAULT NULL,
+  `note` text,
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '1: student, 2: teacher; 3: guest'
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
