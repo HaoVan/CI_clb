@@ -123,3 +123,11 @@ Downloaded from http://devzone.co.in
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1><?php echo $header?></h1>
+        </div>
+        <div class="alert alert-danger" role="alert"><?php echo $this->session->flashdata('message_error') ?></div>
+        <div cclass="alert alert-success" role ="alert"><?php echo $this->session->flashdata('message_success')?></div>
+    </div>

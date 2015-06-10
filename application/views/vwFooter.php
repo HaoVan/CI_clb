@@ -1,4 +1,5 @@
-     <footer>
+</div><!-- /#page-wrapper -->
+<footer>
      <p>&copy; Company <?php echo date('Y') ?>. ark Admin Panel for Codeigniter. Downloaded from <a href='http://devzone.co.in' target='_blank'>http://devzone.co.in</a></p>
       </footer>
     </div> <!-- /container -->
