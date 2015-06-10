@@ -126,8 +126,12 @@ Downloaded from http://devzone.co.in
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1><?php echo $header?></h1>
+            <h1><?php if(isset($header) && !empty($header)){echo $header;}?></h1>
         </div>
-        <div class="alert alert-danger" role="alert"><?php echo $this->session->flashdata('message_error') ?></div>
-        <div cclass="alert alert-success" role ="alert"><?php echo $this->session->flashdata('message_success')?></div>
+        <?php if($this->session->flashdata('message_error')){?>
+            <div class="alert alert-danger" role="alert"><?php echo $this->session->flashdata('message_error') ?></div>
+        <?php }?>
+        <?php if($this->session->flashdata('message_success')){?>
+            <div cclass="alert alert-success" role ="alert"><?php echo $this->session->flashdata('message_success')?></div>
+        <?php }?>
     </div>

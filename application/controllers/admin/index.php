@@ -2,11 +2,14 @@
 if (!defined('BASEPATH'))exit('No direct script access allowed');
 
 class Index extends CI_Controller {
-
+    
+    private $data;
+    
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('admin');
+        $this->data['header'] = "Dashboard";
     }
 
     public function index() {
@@ -62,6 +65,17 @@ class Index extends CI_Controller {
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");
         redirect('admin/home', 'refresh');
+    }
+    
+    public function listview(){
+        
+        if(!$this->session->userdata('is_admin_login')) {
+           $this->load->view('admin/vwLogin');
+        }
+        $list = $this->admin->getListAdmin();
+        $data['list'] = $list;
+        $data['header'] = "Admin List";
+        $this->load->view('admin/list',$data);
     }
 
 }
