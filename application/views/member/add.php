@@ -21,7 +21,7 @@ $this->load->view('admin/vwHeader');
 
 
     <div class="table-responsive">
-        <form class="form">
+        <form class="form" action="confirm_add" method="post">
             <label for="full_name">Full name</label>
             <input name="full_name" class="form-control" value=""/>
             
@@ -45,8 +45,10 @@ $this->load->view('admin/vwHeader');
                 <option value="3">Temporary</option>
                 <option value="2">Off</option>
                 <option value="1">On</option>
-            </select>    
-            
+            </select>   
+            <div>&nbsp</div>
+            <input type="submit" value="Register" class="btn btn-primary"/>  
+            <p class="p_error"><?php if(isset($error_login)) { echo $error_login;} ?></p>      
         </form>
     </div>
 
