@@ -39,14 +39,14 @@ $this->load->view('admin/vwHeader');
             <label for="status">Status</label>
             <select name="block" class="form-control">
                 <option value="1">Off</option>
-                <option value="0" selected>On</option>
+                <option value="0" <?php if(set_value('block')==0){ echo "selected";}?>>On</option>
             </select>
             <?php echo form_error('Block')?>
             
             <label for="user_type">Type</label>
             <select name="user_type" class="form-control">
                 <option value="A">Admin</option>
-                <option value="SA">Super Admin</option>
+                <option value="SA" <?php if(set_value('user_type')=="SA"){ echo "selected";}?>>Super Admin</option>
             </select>
             <?php echo form_error('User_type')?>
             
