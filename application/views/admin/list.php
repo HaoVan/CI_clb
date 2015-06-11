@@ -20,7 +20,7 @@ $this->load->view('admin/vwHeader');
                 <th><?php echo $item->mobile_phone?></th>
                 <th><?php echo $item->email?></th>
                 <th><?php echo $item->address?></th>
-                <th>Edit</th>
+                <th><a href="<?php echo "admin/add/id/".$item->id ?>">Edit</a></th>
             </tr>
         <?php ?>
     </tbody>

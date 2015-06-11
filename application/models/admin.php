@@ -16,7 +16,7 @@ class Admin extends CI_Model{
                 $data['password'] = md5($data['password']);
                 return $this->db->insert($this->tbl_name,$data);
             }else{
-                $data['modified_date']=  date('Y-m-d H:i:s');
+                unset($data['id']);
                 $this->db->where('id',$id);
                 return $this->db->update($this->tbl_name,$data);
             }
@@ -47,11 +47,11 @@ class Admin extends CI_Model{
         }
     }
     
-    public function checkEmail($email){
+    public function selectData($parameter_name,$data){
         try{
-            $this->db->where('email',$email);
+            $this->db->where($parameter_name,$data);
             $query = $this->db->get($this->tbl_name);
-            return $query->result();
+            return $query->row();
         }catch (Exception $e){
             log_message($e);
         }

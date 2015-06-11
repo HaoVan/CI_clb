@@ -30,11 +30,44 @@ class Add extends CI_Controller{
         $this->load->view('admin/add',$data);
     }
     
-    private function validate(){
-        $this->form_validation->set_rules('email', '', 'required|trim|valid_email|callback_email_check');
+    public function id($id){
+        if(!$this->session->userdata('is_admin_login')){
+            redirect('admin/index');
+        }
+        $admin = $this->admin->selectData('id',$id);
+        if(count($admin)<1){
+            $data['header'] = "Add New Admin";
+            $this->session->set_flashdata("message_error", "Admin do not exist");
+            redirect('admin/add');
+        }
+        $data['admin'] = $admin ;
+        $data['header'] = "Edit Admin: ".$admin->username;
+        if($this->input->post()){
+            $this->validate(false);
+            if($this->form_validation->run()){
+                $data=$this->input->post();
+                $rs = $this->admin->savedata($data,$data['id']);
+                if($rs == false){
+                    $this->session->set_flashdata("message_error", "Cannot edit admin");
+                    redirect('admin/add/id/'.$data['id']);
+                }else{
+                    $this->session->set_flashdata('message_success','Successfully editting admin');
+                    redirect('admin/index/listview');
+                }
+            }
+        }
+        $this->load->view('admin/edit',$data);
+    }
+    
+    private function validate($is_new=true){
         $this->form_validation->set_rules('username', '', 'required|trim|alpha_numeric|max_length[255]');
-        $this->form_validation->set_rules('password', '', 'required|trim|alpha_numeric|max_length[255]');
-        $this->form_validation->set_rules('re_password', '', 'required|trim|alpha_numeric|max_length[255]|callback_password_confirm');
+        if($is_new===true){
+            $this->form_validation->set_rules('email', '', 'required|trim|valid_email|callback_email_check');
+            $this->form_validation->set_rules('password', '', 'required|trim|alpha_numeric|max_length[255]');
+            $this->form_validation->set_rules('re_password', '', 'required|trim|alpha_numeric|max_length[255]|callback_password_confirm');
+        }else{
+            $this->form_validation->set_rules('email', '', 'required|trim|valid_email');
+        }
         $this->form_validation->set_rules('address', '', 'required|trim|max_length[255]');
         $this->form_validation->set_rules('mobile_phone', '', 'required|trim|is_natural|max_length[255]|min_length[10]');
         $this->form_validation->set_rules('block', '', 'required|trim|is_natural|max_length[2]');
@@ -53,7 +86,7 @@ class Add extends CI_Controller{
     
     public function email_check(){
         $email = $this->input->post('email');
-        $rs = $this->admin->checkEmail($email);
+        $rs = $this->admin->selectData('email',$email);
         if(count($rs)){
             $this->form_validation->set_message('email_check','Email already exist');
             return false;
