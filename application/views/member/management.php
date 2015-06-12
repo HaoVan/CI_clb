@@ -2,93 +2,54 @@
 $this->load->view('admin/vwHeader');
 ?>
 
-<div id="page-wrapper">
+<a href="/member/index/add" class="btn btn-primary" type="button">Add New Student</a>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1>Manage Students</h1>
-            <ol class="breadcrumb">
-                <li><a href="Users"><i class="icon-dashboard"></i> Users</a></li>
-                <li class="active"><i class="icon-file-alt"></i> Users</li>
+<div class="table-responsive">
+    <table class="table table-hover tablesorter">
+        <thead>
+            <tr>
+                <th class="header">Full name <i class="fa fa-sort"></i></th>
+                <th class="header">Phone<i class="fa fa-sort"></i></th>
+                <th class="header">Address<i class="fa fa-sort"></i></th>
+                <th class="header">Signup Date<i class="fa fa-sort"></i></th>
+                <th class="header">Status<i class="fa fa-sort"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if(isset($list)){?>
+                <?php foreach($list as $item){?>
+                    <tr>
+                        <th class="header"><?php echo $item['full_name'] ?></th>
+                        <th class="header"><?php echo $item['mobile_phone'] ?></th>
+                        <th class="header"><p><?php echo $item['address'] ?></p></th>
+                        <th class="header"><?php echo $item['signup_date'] ?></i></th>
+                        <th class="header">
+                            <?php 
+                                switch ($item['status']){
+                                    case 1:
+                                        echo "ON";break;
+                                    case 2:
+                                        echo "OFF"; break;
+                                    case 3:
+                                        echo "Temporary";break;
+                                }
+                        ?></th>
+                    </tr>
+                <?php }?>    
+            <?php }?>
+        </tbody>
+    </table>
+</div>
 
-
-                <a href="/student/index/add" class="btn btn-primary" type="button" style="float:right;">Add New Student</a>
-                <div style="clear: both;"></div>
-            </ol>
-        </div>
-    </div><!-- /.row -->
-
-
-
-    <div class="table-responsive">
-        <table class="table table-hover tablesorter">
-            <thead>
-                <tr>
-                    <th class="header">UserName <i class="fa fa-sort"></i></th>
-                    <th class="header">Email <i class="fa fa-sort"></i></th>
-                    <th class="header">Last Login <i class="fa fa-sort"></i></th>
-                    <th class="header">Signup Date<i class="fa fa-sort"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sumit</td>
-                    <td>sumit@example.com</td>
-                    <td>Jan 1,2014</td>
-                    <td>Jan 1,2014</td>
-                </tr>
-                <tr>
-                    <td>Ravi</td>
-                    <td>Ravi@example.com</td>
-                    <td>Jan 1,2014</td>
-                    <td>Jan 1,2014</td>
-                </tr>
-                <tr>
-                    <td>Tom</td>
-                    <td>Tom@example.com</td>
-                    <td>Jan 3,2014</td>
-                    <td>Jan 1,2014</td>
-                </tr>
-                <tr>
-                    <td>Tina</td>
-                    <td>Tina@example.com</td>
-                    <td>Jan 1,2014</td>
-                    <td>Jan 1,2014</td>
-                </tr>
-                <tr>
-                    <td>Sam</td>
-                    <td>Sam@example.com</td>
-                    <td>Jan 1,2014</td>
-                    <td>Jan 1,2014</td>
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>John@example.com</td>
-                    <td>Oct 23,2013</td>
-                    <td>June 5,2014</td>
-                </tr>
-                <tr>
-                    <td>Joseph</td>
-                    <td>Joseph@example.com</td>
-                    <td>Jan 1,2014</td>
-                    <td>Jan 1,2014</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <ul class="pagination pagination-sm">
-        <li class="disabled"><a href="#"><<</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">>></a></li>
-    </ul>
-
-
-</div><!-- /#page-wrapper -->
+<ul class="pagination pagination-sm">
+    <li class="disabled"><a href="#"><<</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">>></a></li>
+</ul>
 
 <?php
 $this->load->view('admin/vwFooter');

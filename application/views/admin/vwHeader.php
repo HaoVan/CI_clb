@@ -6,28 +6,25 @@
     <meta name="description" content="">
     <meta name="author" content="abhishek@devzone.co.in">
 
-     <title>Free Codeigniter Admin Panel with Twitter Bootstrap 3.0 - .arkAdminPanel Ver 2.0 http://devzone.co.in</title>
+    <title>English Club</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo HTTP_CSS_PATH; ?>bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery-ui.css" />
+    <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery-ui.structure.css" />
+    <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery-ui.theme.css" />
     <!-- Add custom CSS here -->
     <link href="<?php echo HTTP_CSS_PATH; ?>arkadmin.css" rel="stylesheet">
-      <!-- JavaScript -->
+    <!-- JavaScript -->
     <script src="<?php echo HTTP_JS_PATH; ?>jquery-1.10.2.js"></script>
     <script src="<?php echo HTTP_JS_PATH; ?>bootstrap.js"></script>
-    <script src="<?php echo HTTP_JS_PATH; ?>das.js"></script>
+    <script src="<?php echo HTTP_JS_PATH; ?>jquery-ui.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="<?php echo HTTP_JS_PATH; ?>html5shiv.js"></script>
       <script src="<?php echo HTTP_JS_PATH; ?>respond.min.js"></script>
-    <![endif]-->
-    <!--  
-
-Author : Abhishek R. Kaushik 
-Downloaded from http://devzone.co.in
--->
-
+    <![endif]-->        
   </head>
 
   <body>
@@ -54,10 +51,10 @@ Downloaded from http://devzone.co.in
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
             <li <?php echo  $pg =='dash' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li <?php echo  $pg =='cms' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/cms"><i class="fa fa-file"></i> CMS</a></li>              
-            <li <?php echo  $pg =='user' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/users"><i class="fa fa-file"></i> Users</a></li>
-            <li <?php echo  $pg =='products' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/products"><i class="fa fa-file"></i> Products</a></li>
-            <li <?php echo  $pg =='contact' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/contactus"><i class="fa fa-file"></i> ContactUs</a></li>
+            <li <?php echo  $pg =='admin' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/cms"><i class="fa fa-file"></i>Admin</a></li>              
+            <li <?php echo  $pg =='member' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/users"><i class="fa fa-file"></i>Member</a></li>
+            <!--<li <?php echo  $pg =='products' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/products"><i class="fa fa-file"></i> Products</a></li>-->
+            <!--<li <?php echo  $pg =='contact' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/contactus"><i class="fa fa-file"></i> ContactUs</a></li>-->
             
         
           </ul>

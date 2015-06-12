@@ -10,6 +10,7 @@ class Index extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('admin');
         $this->data['header'] = "Dashboard";
+        
     }
 
     public function index() {
@@ -73,9 +74,9 @@ class Index extends CI_Controller {
            $this->load->view('admin/vwLogin');
         }
         $list = $this->admin->getListAdmin();
-        $data['list'] = $list;
-        $data['header'] = "Admin List";
-        $this->load->view('admin/list',$data);
+        $this->data['list'] = $list;
+        $this->data['header'] = "Admin List";
+        $this->load->view('admin/list',$this->data);
     }
 
 }

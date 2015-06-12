@@ -26,9 +26,28 @@ Class Member extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
-    public function getlist(){
-        $query = $this->db->get();
-        return $query;
+    
+    public function getByName($name,$type=1){
+        $this->db->like('full_name', $name);
+        $this->db->where('type', $type);
+        $query = $this->db->get($this->tbl_name);
+        if($query->num_rows()){
+            return $query->result_array();
+        }else{
+            return false;
+        }
+    }
+    
+    public function getlist($type=1,$limit=30,$offset=0){
+
+        $this->db->where('type',$type);
+        $query = $this->db->get($this->tbl_name,$limit,$offset);
+        if($query->num_rows()){
+            return $query->result_array();
+        }else{
+            return false;
+        }
+      
     }
     public function check_exists($email_arr){
         
@@ -37,6 +56,18 @@ Class Member extends CI_Model {
         if($query)
             return 1;
         return 0;
+    }
+    
+    public function totalMember($status=1,$type=1){
+        
+        $this->db->where("status",$status);
+        $this->db->where("type",$type);
+        $query = $this->db->get($this->tbl_name);
+        if($query ===false){
+            return 0;
+        }else{
+            return $query->num_rows();
+        }
     }
 }
 

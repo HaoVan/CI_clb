@@ -17,11 +17,14 @@ class Dashboard extends CI_Controller {
          if (!$this->session->userdata('is_admin_login')) {
             redirect('admin/home');
         }
+        $this->load->model('member');
     }
 
     public function index() {
         $this->data['header'] = "Dashboard";
         $this->data['page']='dash';
+        $this->data['cur_member'] = $this->member->totalMember();
+        $this->data['pre_member'] = $this->member->totalMember(3);
         $this->load->view('admin/vwDashboard',$this->data);
     }
 

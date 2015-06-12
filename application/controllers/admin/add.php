@@ -2,22 +2,26 @@
 
 class Add extends CI_Controller{
     
+    private $data;
+    
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model("admin");
-    }
-    
-    public function index(){
         if(!$this->session->userdata('is_admin_login')){
             redirect('admin/index');
         }
-        $data['header'] = "Add New Admin";
+        $this->data['page'] = "admin";
+    }
+    
+    public function index(){
+        
+        $this->data['header'] = "Add New Admin";
         if($this->input->post()){
             $this->validate();
             if($this->form_validation->run()){
-                $data=$this->input->post();
-                $rs = $this->admin->savedata($data);
+                $this->data=$this->input->post();
+                $rs = $this->admin->savedata($this->data);
                 if($rs == false){
                     $this->session->set_flashdata("message_error", "Cannot add new admin");
                     $this->load->view('admin/add');
@@ -27,36 +31,34 @@ class Add extends CI_Controller{
                 }
             }
         }
-        $this->load->view('admin/add',$data);
+        $this->load->view('admin/add',$this->data);
     }
     
     public function id($id){
-        if(!$this->session->userdata('is_admin_login')){
-            redirect('admin/index');
-        }
+        
         $admin = $this->admin->selectData('id',$id);
         if(count($admin)<1){
-            $data['header'] = "Add New Admin";
+            $this->data['header'] = "Add New Admin";
             $this->session->set_flashdata("message_error", "Admin do not exist");
             redirect('admin/add');
         }
-        $data['admin'] = $admin ;
-        $data['header'] = "Edit Admin: ".$admin->username;
+        $this->data['admin'] = $admin ;
+        $this->data['header'] = "Edit Admin: ".$admin->username;
         if($this->input->post()){
             $this->validate(false);
             if($this->form_validation->run()){
-                $data=$this->input->post();
-                $rs = $this->admin->savedata($data,$data['id']);
+                $this->data=$this->input->post();
+                $rs = $this->admin->savedata($this->data,$this->data['id']);
                 if($rs == false){
                     $this->session->set_flashdata("message_error", "Cannot edit admin");
-                    redirect('admin/add/id/'.$data['id']);
+                    redirect('admin/add/id/'.$this->data['id']);
                 }else{
                     $this->session->set_flashdata('message_success','Successfully editting admin');
                     redirect('admin/index/listview');
                 }
             }
         }
-        $this->load->view('admin/edit',$data);
+        $this->load->view('admin/edit',$this->data);
     }
     
     private function validate($is_new=true){
