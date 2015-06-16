@@ -24,7 +24,12 @@ Class Member extends CI_Model {
     public function getbyId($id){
         $this->db->select('*')->from($this->tbl_name)->where('id', $id);
         $query = $this->db->get();
-        return $query;
+        if($query->num_rows()){
+            return $query->row();
+        }else{
+            return false;
+        }
+        
     }
     
     public function getByName($name,$type=1){

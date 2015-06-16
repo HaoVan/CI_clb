@@ -83,6 +83,7 @@ class Index extends CI_Controller {
             $this->session->set_flashdata("message_error","The member not exist");
             redirect('member/index');
         }
+        $this->data['header'] = "Member infomation";
         $this->data['member'] = $data;
         $this->load->view("member/detail",$this->data);
         

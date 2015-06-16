@@ -19,7 +19,7 @@ $this->load->view('admin/vwHeader');
             <?php if(isset($list)){?>
                 <?php foreach($list as $item){?>
                     <tr>
-                        <th class="header"><?php echo $item['full_name'] ?></th>
+                        <th class="header"><a href="/member/index/detail/<?php echo $item['id'] ?>"><?php echo $item['full_name'] ?></a></th>
                         <th class="header"><?php echo $item['mobile_phone'] ?></th>
                         <th class="header"><p><?php echo $item['address'] ?></p></th>
                         <th class="header"><?php echo $item['signup_date'] ?></i></th>
