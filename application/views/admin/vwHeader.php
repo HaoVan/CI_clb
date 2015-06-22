@@ -52,7 +52,7 @@
           <ul class="nav navbar-nav side-nav">
             <li <?php echo  $pg =='dash' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <!--<li <?php echo  $pg =='admin' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/cms"><i class="fa fa-file"></i>Admin</a></li>-->              
-            <li <?php echo  $pg =='member' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>/member/index"><i class="fa fa-file"></i>Member</a></li>
+            <li <?php echo  $pg =='member' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>member/index"><i class="fa fa-file"></i>Member</a></li>
             <!--<li <?php echo  $pg =='products' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/products"><i class="fa fa-file"></i> Products</a></li>-->
             <!--<li <?php echo  $pg =='contact' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/contactus"><i class="fa fa-file"></i> ContactUs</a></li>-->
             
