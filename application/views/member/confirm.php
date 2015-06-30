@@ -41,7 +41,7 @@ $this->load->view('admin/vwHeader');
         <textarea name="note" class="form-control" value="<?php echo $member['note']?>" cols="50" rows="5"></textarea>
         
         <div>&nbsp</div>
-        <input type="submit" value="Register" class="btn btn-primary"/>  
+        <input type="submit" value="Confirm" class="btn btn-primary"/>  
         <p class="p_error"><?php if (isset($error_login)) {
     echo $error_login;
 } ?></p>      

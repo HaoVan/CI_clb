@@ -21,6 +21,40 @@ class Index extends CI_Controller {
     public function index() {
 
         $this->data['header'] = 'member';
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'http://example.com/index.php/test/page/';
+        $total = $this->member->getTotalMember();
+        $config['total_rows'] = $total;
+        $config['per_page'] = 1;
+        $config['full_tag_open'] = '<ul class="pagination">';
+            // I added class name 'page_test' to used later for jQuery
+        $config['full_tag_close'] = '</ul><!--pagination-->';
+        $config['first_link'] = '&laquo;';
+        $config['first_tag_open'] = '<li class="prev page">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = '&raquo;';
+        $config['last_tag_open'] = '<li class="next page">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&ge;';
+        $config['next_tag_open'] = '<li class="next page">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&le;';
+        $config['prev_tag_open'] = '<li class="prev page">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="active"><a href="javascript:void(0);">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page">';
+        $config['num_tag_close'] = '</li>';
+        
+        $this->pagination->initialize($config);
+        $paging = $this->pagination->create_links();
+        $this->data['paging'] = $paging;
         $list = $this->member->getlist();
         if($list){
             $this->data['list'] = $list;
@@ -55,9 +89,26 @@ class Index extends CI_Controller {
         redirect('member/index/add');
         
     }
-    public function edit() {
-        $arr['page'] = 'member';
-        $this->load->view('admin/vwEditUser',$arr);
+    public function edit($id) {
+        $this->data['header'] = 'Edit member';
+        $data = $this->member->getbyId($id);
+         if(!$data){
+            $this->session->set_flashdata("message_error","The member not exist");
+            redirect('member/index');
+        }
+        if($this->input->post()){
+            $this->validation();
+            if($this->form_validation->run()){
+                $this->data['header'] = "Confirm edit member";
+                $this->data['member'] = $this->input->post();
+                $this->data['member']['id'] = $id;
+                $this->session->set_userdata('member',$this->data['member']);
+                return $this->load->view('member/confirm',$this->data);
+            }
+        }
+        $this->data['page'] = 'member';
+        $this->data['member'] = $data;
+        $this->load->view('member/editUser',$this->data);
     }
     
     public function search(){

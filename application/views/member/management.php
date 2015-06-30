@@ -10,9 +10,10 @@ $this->load->view('admin/vwHeader');
             <tr>
                 <th class="header">Full name <i class="fa fa-sort"></i></th>
                 <th class="header">Phone<i class="fa fa-sort"></i></th>
-                <th class="header">Address<i class="fa fa-sort"></i></th>
                 <th class="header">Signup Date<i class="fa fa-sort"></i></th>
+                <th class="header">Note<i class="fa fa-sort"></i></th>
                 <th class="header">Status<i class="fa fa-sort"></i></th>
+                <th class="header">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +22,8 @@ $this->load->view('admin/vwHeader');
                     <tr>
                         <th class="header"><a href="/member/index/detail/<?php echo $item['id'] ?>"><?php echo $item['full_name'] ?></a></th>
                         <th class="header"><?php echo $item['mobile_phone'] ?></th>
-                        <th class="header"><p><?php echo $item['address'] ?></p></th>
                         <th class="header"><?php echo $item['signup_date'] ?></i></th>
+                        <th class="header"><p><?php echo $item['note'] ?></p></th>
                         <th class="header">
                             <?php 
                                 switch ($item['status']){
@@ -34,22 +35,16 @@ $this->load->view('admin/vwHeader');
                                         echo "Temporary";break;
                                 }
                         ?></th>
+                        <th class="header"><a alt="Edit" href="/member/index/edit/<?php echo $item['id'] ?>">Edit</a></th>
                     </tr>
                 <?php }?>    
             <?php }?>
         </tbody>
     </table>
 </div>
-
-<ul class="pagination pagination-sm">
-    <li class="disabled"><a href="#"><<</a></li>
-    <li class="active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">>></a></li>
-</ul>
+<?php 
+    echo $paging;
+?>
 
 <?php
 $this->load->view('admin/vwFooter');

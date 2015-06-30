@@ -7,11 +7,15 @@ Class Member extends CI_Model {
     
     private $tbl_name ="tbl_member";
     
-    public function save($data,$id=null){
+    public function save($data){
+        $id=null;
+        if(isset($data['id']) && is_numeric($data['id'])){
+            $id = $data['id'];
+            unset($data['id']);
+        }
         if($id==null){
             return $this->db->insert($this->tbl_name,$data);
         }else{
-            $data['modified_date']=  date('Y-m-d H:i:s');
             $this->db->where('id',$id);
             return $this->db->update($this->tbl_name,$data);
         }
@@ -44,7 +48,7 @@ Class Member extends CI_Model {
     }
     
     public function getlist($type=1,$limit=30,$offset=0){
-
+        
         $this->db->where('type',$type);
         $query = $this->db->get($this->tbl_name,$limit,$offset);
         if($query->num_rows()){
@@ -54,6 +58,19 @@ Class Member extends CI_Model {
         }
       
     }
+    
+    public function getTotalMember($type=1){
+        $this->db->select('count(*) as total');
+        $this->db->where('type',$type);
+        $query = $this->db->get($this->tbl_name);
+        if($query->num_rows()){
+            $data = $query->first_row();
+            return $data->total;
+        }else{
+            return false;
+        }
+    }
+
     public function check_exists($email_arr){
         
         $this->db->where_in('email', $email_arr);
