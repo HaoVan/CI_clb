@@ -13,10 +13,10 @@ $this->load->view('admin/vwHeader');
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
-                    <div class="col-xs-9 text-right">
+                    <div class="col-xs-6 text-right">
                         <p class="announcement-heading"><?php echo $cur_member ?></p>
                         <p class="announcement-text">Student</p>
                     </div>
@@ -25,10 +25,10 @@ $this->load->view('admin/vwHeader');
             <a href="#">
                 <div class="panel-footer announcement-bottom">
                     <div class="row">
-                        <div class="col-xs-3">
-                            View Mentions
+                        <div class="col-xs-6">
+                            View more
                         </div>
-                        <div class="col-xs-9 text-right">
+                        <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
                         </div>
                     </div>
@@ -45,7 +45,7 @@ $this->load->view('admin/vwHeader');
                     </div>
                     <div class="col-xs-6 text-right">
                         <p class="announcement-heading"><?php echo $pre_member ?></p>
-                        <p class="announcement-text">Temporary Student</p>
+                        <p class="announcement-text">Temporary</p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ $this->load->view('admin/vwHeader');
                 <div class="panel-footer announcement-bottom">
                     <div class="row">
                         <div class="col-xs-6">
-                            Complete Tasks
+                            View more
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -71,8 +71,8 @@ $this->load->view('admin/vwHeader');
                         <i class="fa fa-tasks fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">18</p>
-                        <p class="announcement-text">Crawl Errors</p>
+                        <p class="announcement-heading"><?php echo $off_member?></p>
+                        <p class="announcement-text">Leave</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ $this->load->view('admin/vwHeader');
                 <div class="panel-footer announcement-bottom">
                     <div class="row">
                         <div class="col-xs-6">
-                            Fix Issues
+                            View more
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -125,7 +125,7 @@ $this->load->view('admin/vwHeader');
     <div class="col-lg-12">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Search</h3>
+                <h3 class="panel-title">Search</h3>
             </div>
             <div class="panel-body">    
                 <form action="/member/index/search" method="post">

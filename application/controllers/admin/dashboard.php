@@ -25,6 +25,7 @@ class Dashboard extends CI_Controller {
         $this->data['page']='dash';
         $this->data['cur_member'] = $this->member->totalMember();
         $this->data['pre_member'] = $this->member->totalMember(3);
+        $this->data['off_member'] = $this->member->totalMember(2);
         $this->load->view('admin/vwDashboard',$this->data);
     }
 

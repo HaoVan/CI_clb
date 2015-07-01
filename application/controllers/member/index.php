@@ -23,10 +23,13 @@ class Index extends CI_Controller {
         $this->data['header'] = 'member';
         $this->load->library('pagination');
 
-        $config['base_url'] = 'http://example.com/index.php/test/page/';
+        $config['base_url'] = 'http://successkey.dv/member/index/index/';
         $total = $this->member->getTotalMember();
+        $config['uri_segment'] = 4;
+        $curItem = 0;
+        $curItem = ($this->uri->segment($config["uri_segment"])) ? $this->uri->segment($config["uri_segment"]) : 0;
         $config['total_rows'] = $total;
-        $config['per_page'] = 1;
+        $config['per_page'] = 30;
         $config['full_tag_open'] = '<ul class="pagination">';
             // I added class name 'page_test' to used later for jQuery
         $config['full_tag_close'] = '</ul><!--pagination-->';
@@ -55,7 +58,7 @@ class Index extends CI_Controller {
         $this->pagination->initialize($config);
         $paging = $this->pagination->create_links();
         $this->data['paging'] = $paging;
-        $list = $this->member->getlist();
+        $list = $this->member->getlist(1,$config['per_page'],$curItem);
         if($list){
             $this->data['list'] = $list;
         }
