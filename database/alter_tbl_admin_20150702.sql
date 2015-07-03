@@ -1,0 +1,1 @@
+ALTER TABLE `tbl_course` ADD `price` FLOAT UNSIGNED NOT NULL DEFAULT '0' AFTER `level`;

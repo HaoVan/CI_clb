@@ -15,7 +15,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
          if (!$this->session->userdata('is_admin_login')) {
-            redirect('admin/home');
+            redirect('admin/index');
         }
         $this->load->model('member');
     }

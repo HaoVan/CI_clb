@@ -1,8 +1,19 @@
 <?php
 $this->load->view('admin/vwHeader');
 ?>
+<link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery.ui.timepicker.css" />
+<script src="<?php echo HTTP_JS_PATH; ?>jquery.ui.timepicker.js"></script>
+<script type="text/javascript">
+    $(document).on('focus','.time',function(){
+        $(this).timepicker({
+            onSelect: function(time, inst) {
+                    $('.time').html( time);
+                }
+        })
+    })
+</script>    
     <div class="table-responsive">
-        <form class="form" method="post" action="/admin/add/index">
+        <form class="form" method="post" action="/course/index/add">
             <label for="name">Class name</label>
             <input name="name" class="form-control" value="<?php echo set_value('name')?>"/>
             <p class="error"><?php echo form_error('name')?></p>
@@ -11,13 +22,25 @@ $this->load->view('admin/vwHeader');
             <input name="day" class="form-control" value="<?php echo set_value('day')?>"/>
             <p class="error"><?php echo form_error('day')?></p>
             
-            <label for="time">Time </label>
-            <input name="time" class="form-control" value="<?php echo set_value('time')?>"/>
-            <p class="error"><?php echo form_error('time')?></p>
-            
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="start_time">Start Time </label>
+                    <input name="start_time" class="form-control time" value="<?php echo set_value('start_time')?>"/>
+                    <p class="error"><?php echo form_error('start_time')?></p>
+                </div>
+                <div class="col-lg-6">
+                    <label for="end_time">End Time </label>
+                    <input name="end_time" class="form-control time" value="<?php echo set_value('end_time')?>"/>
+                    <p class="error"><?php echo form_error('end_time')?></p>
+                </div>    
+            </div>
             <label for="level">Level</label>
             <input name="level" class="form-control" value="<?php echo set_value('level')?>"/>
             <p class="error"><?php echo form_error('level')?></p>
+            
+            <label for="price">Price</label>
+            <input name="price" class="form-control" value="<?php echo set_value('price')?>"/>
+            <p class="error"><?php echo form_error('price')?></p>
             
             <label for="opened_date">Open Date</label>
             <input name="opened_date" class="form-control" value="<?php echo set_value('opened_date')?>"/>

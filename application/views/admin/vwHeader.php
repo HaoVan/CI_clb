@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="abhishek@devzone.co.in">
+    <!--<meta name="author" content="abhishek@devzone.co.in">-->
 
     <title>English Club</title>
 
@@ -14,12 +14,14 @@
     <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery-ui.css" />
     <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery-ui.structure.css" />
     <link rel="stylesheet" href="<?php echo HTTP_CSS_PATH; ?>jquery-ui.theme.css" />
+    
     <!-- Add custom CSS here -->
     <link href="<?php echo HTTP_CSS_PATH; ?>arkadmin.css" rel="stylesheet">
     <!-- JavaScript -->
     <script src="<?php echo HTTP_JS_PATH; ?>jquery-1.10.2.js"></script>
     <script src="<?php echo HTTP_JS_PATH; ?>bootstrap.js"></script>
     <script src="<?php echo HTTP_JS_PATH; ?>jquery-ui.js"></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="<?php echo HTTP_JS_PATH; ?>html5shiv.js"></script>
@@ -114,7 +116,7 @@
                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
                 <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
                 <li class="divider"></li>
-                <li><a href="<?php echo base_url(); ?>admin/home/logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/index/logout"><i class="fa fa-power-off"></i> Log Out</a></li>
               </ul>
             </li>
           </ul>
