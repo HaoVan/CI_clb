@@ -23,7 +23,7 @@ class Index extends CI_Controller {
         $this->data['header'] = 'member';
         $this->load->library('pagination');
 
-        $config['base_url'] = 'http://successkey.dv/member/index/index/';
+        $config['base_url'] = '/member/index/index/';
         $total = $this->member->getTotalMember();
         $config['uri_segment'] = 4;
         $curItem = 0;
