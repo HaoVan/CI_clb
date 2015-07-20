@@ -40,7 +40,7 @@ $this->load->view('admin/vwHeader');
         </select>   
         
         <label for="status">Note</label>
-        <textarea name="note" class="form-control" value="<?php echo $member->note ?>" cols="50" rows="5"></textarea>
+        <textarea name="note" class="form-control" cols="50" rows="5"><?php echo $member->note ?></textarea>
         
         <div>&nbsp</div>
         <input type="submit" value="Edit" class="btn btn-primary"/>   

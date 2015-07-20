@@ -22,6 +22,7 @@ class Index extends CI_Controller{
     public function add(){
 
         if($this->input->post()){
+            $this->validation();
             if($this->form_validation->run()){
                 $data = $this->input->post();
                 $data['time'] = $this->input->post("start_time")." - ". $this->input->post("end_time"); 
@@ -30,8 +31,9 @@ class Index extends CI_Controller{
                 $rs = $this->course->saveData($data);
             }
         }
-        $data['header'] = "Add new course";
-        $this->load->view('course/add',$data);
+        $this->data['teachers'] = $this->member->getlist(2);
+        $this->data['header'] = "Add new course";
+        $this->load->view('course/add',$this->data);
     }
     
     private function validation(){

@@ -2,30 +2,30 @@
 $this->load->view('admin/vwHeader');
 ?>
     <div class="table-responsive">
-        <table>
+        <table class="col-md-12">
             <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>Level</td>
-                    <td>Day</td>
-                    <td>Time</td>
-                    <td>Price</td>
-                    <td>Open date</td>
-                    <td>Status</td>
-                    <td>Action</td>
+                    <td class="col-md-2">Name</td>
+                    <td class="col-md-2">Level</td>
+                    <td class="col-md-1">Day</td>
+                    <td class="col-md-2">Time</td>
+                    <td class="col-md-1">Price</td>
+                    <td class="col-md-2">Open date</td>
+                    <td class="col-md-1">Status</td>
+                    <td class="col-md-1">Action</td>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($list as $item){?>
                     <tr>
-                        <td><?php echo $item->name ?></td>
-                        <td><?php echo $item->level ?></td>
-                        <td><?php echo $item->day ?></td>
-                        <td><?php echo $item->time ?></td>
-                        <td><?php echo $item->price ?></td>
-                        <td><?php echo $item->open_date ?></td>
-                        <td><?php echo $item->status ?></td>
-                        <td><a href="<?php echo "/course/index/edit/$item->id"?>">Edit</a></td>
+                        <td class="col-md-2" ><?php echo $item['name'] ?></td>
+                        <td class="col-md-2" ><?php echo $item['level'] ?></td>
+                        <td class="col-md-1" ><?php echo $item['day'] ?></td>
+                        <td class="col-md-2" ><?php echo $item['time'] ?></td>
+                        <td class="col-md-1" ><?php echo $item['price'] ?></td>
+                        <td class="col-md-2" ><?php echo $item['opened_date'] ?></td>
+                        <td class="col-md-1" ><?php if($item['status']== 0){ echo 'On'; }else { echo 'Off'; } ?></td>
+                        <td class="col-md-1" ><a href="/course/index/edit/<?php echo $item['id']?>">Edit</a></td>
                     </tr>
                 <?php }?>
             </tbody>

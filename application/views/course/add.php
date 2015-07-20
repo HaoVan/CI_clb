@@ -9,8 +9,8 @@ $this->load->view('admin/vwHeader');
             onSelect: function(time, inst) {
                     $('.time').html( time);
                 }
-        })
-    })
+        });
+    });
 </script>    
     <div class="table-responsive">
         <form class="form" method="post" action="/course/index/add">
@@ -44,12 +44,16 @@ $this->load->view('admin/vwHeader');
             
             <label for="opened_date">Open Date</label>
             <input name="opened_date" class="form-control" value="<?php echo set_value('opened_date')?>"/>
-            <p class="error"><?php echo form_error('open_date')?></p>
+            <p class="error"><?php echo form_error('opened_date')?></p>
             
             <label for="teacher">Teacher</label>
             <select name="teacher_id" class="form-control">
                 <option value="0">Select teacher</option>
-                <option value="0" <?php if(set_value('block')==0){ echo "selected";}?>>On</option>
+                <?php 
+                    foreach($teachers as $teacher){
+                ?>
+                <option value="<?php echo $teacher['id']?>"><?php echo $teacher['full_name'] ?></option>
+                <?php }?>
             </select>
             <p class="error"><?php echo form_error('teacher_id')?></p>
             

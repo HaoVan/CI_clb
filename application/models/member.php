@@ -50,6 +50,8 @@ Class Member extends CI_Model {
     public function getlist($type=1,$limit=30,$offset=0){
         
         $this->db->where('type',$type);
+        $this->db->order_by("status","DESC");
+        $this->db->order_by("id","DESC");
         $query = $this->db->get($this->tbl_name,$limit,$offset);
         if($query->num_rows()){
             return $query->result_array();
